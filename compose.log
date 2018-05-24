@@ -1,0 +1,63 @@
+Attaching to database, greeting-app, proxy_nginx
+[36mdatabase        |[0m 2018-05-24 22:33:54.553 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+[36mdatabase        |[0m 2018-05-24 22:33:54.553 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+[36mdatabase        |[0m 2018-05-24 22:33:54.558 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+[36mdatabase        |[0m 2018-05-24 22:33:54.576 UTC [19] LOG:  database system was shut down at 2018-05-24 22:17:16 UTC
+[36mdatabase        |[0m 2018-05-24 22:33:54.588 UTC [1] LOG:  database system is ready to accept connections
+[33mgreeting-app    |[0m Collecting flask (from -r greetings_app/requirements.txt (line 1))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/7f/e7/08578774ed4536d3242b14dacb4696386634607af824ea997202cd0edb4b/Flask-1.0.2-py2.py3-none-any.whl (91kB)
+[33mgreeting-app    |[0m Collecting psycopg2 (from -r greetings_app/requirements.txt (line 2))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/74/83/51580322ed0e82cba7ad8e0af590b8fb2cf11bd5aaa1ed872661bd36f462/psycopg2-2.7.4.tar.gz (425kB)
+[33mgreeting-app    |[0m Collecting Flask-SQLAlchemy (from -r greetings_app/requirements.txt (line 3))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/a1/44/294fb7f6bf49cc7224417cd0637018db9fee0729b4fe166e43e2bbb1f1c8/Flask_SQLAlchemy-2.3.2-py2.py3-none-any.whl
+[33mgreeting-app    |[0m Collecting pytest (from -r greetings_app/requirements.txt (line 4))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/62/59/950a805f90587d6e2f3692cf43700becb7cdf6c16b06d84e7516b199236b/pytest-3.6.0-py2.py3-none-any.whl (194kB)
+[33mgreeting-app    |[0m Collecting Werkzeug>=0.14 (from flask->-r greetings_app/requirements.txt (line 1))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/20/c4/12e3e56473e52375aa29c4764e70d1b8f3efa6682bef8d0aae04fe335243/Werkzeug-0.14.1-py2.py3-none-any.whl (322kB)
+[33mgreeting-app    |[0m Collecting Jinja2>=2.10 (from flask->-r greetings_app/requirements.txt (line 1))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/7f/ff/ae64bacdfc95f27a016a7bed8e8686763ba4d277a78ca76f32659220a731/Jinja2-2.10-py2.py3-none-any.whl (126kB)
+[33mgreeting-app    |[0m Collecting click>=5.1 (from flask->-r greetings_app/requirements.txt (line 1))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/34/c1/8806f99713ddb993c5366c362b2f908f18269f8d792aff1abfd700775a77/click-6.7-py2.py3-none-any.whl (71kB)
+[33mgreeting-app    |[0m Collecting itsdangerous>=0.24 (from flask->-r greetings_app/requirements.txt (line 1))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/dc/b4/a60bcdba945c00f6d608d8975131ab3f25b22f2bcfe1dab221165194b2d4/itsdangerous-0.24.tar.gz (46kB)
+[33mgreeting-app    |[0m Collecting SQLAlchemy>=0.8.0 (from Flask-SQLAlchemy->-r greetings_app/requirements.txt (line 3))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/c1/c8/392fcd2d01534bc871c65cb964e0b39d59feb777e51649e6eaf00f6377b5/SQLAlchemy-1.2.7.tar.gz (5.6MB)
+[33mgreeting-app    |[0m Collecting six>=1.10.0 (from pytest->-r greetings_app/requirements.txt (line 4))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/67/4b/141a581104b1f6397bfa78ac9d43d8ad29a7ca43ea90a2d863fe3056e86a/six-1.11.0-py2.py3-none-any.whl
+[33mgreeting-app    |[0m Collecting more-itertools>=4.0.0 (from pytest->-r greetings_app/requirements.txt (line 4))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/85/40/90c3b0393e12b9827381004224de8814686e3d7182f9d4182477f600826d/more_itertools-4.2.0-py3-none-any.whl (45kB)
+[33mgreeting-app    |[0m Collecting py>=1.5.0 (from pytest->-r greetings_app/requirements.txt (line 4))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/67/a5/f77982214dd4c8fd104b066f249adea2c49e25e8703d284382eb5e9ab35a/py-1.5.3-py2.py3-none-any.whl (84kB)
+[33mgreeting-app    |[0m Collecting pluggy<0.7,>=0.5 (from pytest->-r greetings_app/requirements.txt (line 4))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/ba/65/ded3bc40bbf8d887f262f150fbe1ae6637765b5c9534bd55690ed2c0b0f7/pluggy-0.6.0-py3-none-any.whl
+[33mgreeting-app    |[0m Collecting attrs>=17.4.0 (from pytest->-r greetings_app/requirements.txt (line 4))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/41/59/cedf87e91ed541be7957c501a92102f9cc6363c623a7666d69d51c78ac5b/attrs-18.1.0-py2.py3-none-any.whl
+[33mgreeting-app    |[0m Collecting atomicwrites>=1.0 (from pytest->-r greetings_app/requirements.txt (line 4))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/0a/e8/cd6375e7a59664eeea9e1c77a766eeac0fc3083bb958c2b41ec46b95f29c/atomicwrites-1.1.5-py2.py3-none-any.whl
+[33mgreeting-app    |[0m Requirement already satisfied: setuptools in /usr/local/lib/python3.7/site-packages (from pytest->-r greetings_app/requirements.txt (line 4)) (39.1.0)
+[33mgreeting-app    |[0m Collecting MarkupSafe>=0.23 (from Jinja2>=2.10->flask->-r greetings_app/requirements.txt (line 1))
+[33mgreeting-app    |[0m   Downloading https://files.pythonhosted.org/packages/4d/de/32d741db316d8fdb7680822dd37001ef7a448255de9699ab4bfcbdf4172b/MarkupSafe-1.0.tar.gz
+[33mgreeting-app    |[0m Building wheels for collected packages: psycopg2, itsdangerous, SQLAlchemy, MarkupSafe
+[33mgreeting-app    |[0m   Running setup.py bdist_wheel for psycopg2: started
+[33mgreeting-app    |[0m   Running setup.py bdist_wheel for psycopg2: finished with status 'done'
+[33mgreeting-app    |[0m   Stored in directory: /root/.cache/pip/wheels/43/ff/71/a0b0d6dbf71f912b95cf18101bca206b40eed5086d8fdb4ed9
+[33mgreeting-app    |[0m   Running setup.py bdist_wheel for itsdangerous: started
+[33mgreeting-app    |[0m   Running setup.py bdist_wheel for itsdangerous: finished with status 'done'
+[33mgreeting-app    |[0m   Stored in directory: /root/.cache/pip/wheels/2c/4a/61/5599631c1554768c6290b08c02c72d7317910374ca602ff1e5
+[33mgreeting-app    |[0m   Running setup.py bdist_wheel for SQLAlchemy: started
+[33mgreeting-app    |[0m   Running setup.py bdist_wheel for SQLAlchemy: finished with status 'done'
+[33mgreeting-app    |[0m   Stored in directory: /root/.cache/pip/wheels/89/38/e1/e121d77c19eeeee42baabc2e623f08285267daedbf2fea9dd7
+[33mgreeting-app    |[0m   Running setup.py bdist_wheel for MarkupSafe: started
+[33mgreeting-app    |[0m   Running setup.py bdist_wheel for MarkupSafe: finished with status 'done'
+[33mgreeting-app    |[0m   Stored in directory: /root/.cache/pip/wheels/33/56/20/ebe49a5c612fffe1c5a632146b16596f9e64676768661e4e46
+[33mgreeting-app    |[0m Successfully built psycopg2 itsdangerous SQLAlchemy MarkupSafe
+[33mgreeting-app    |[0m Installing collected packages: Werkzeug, MarkupSafe, Jinja2, click, itsdangerous, flask, psycopg2, SQLAlchemy, Flask-SQLAlchemy, six, more-itertools, py, pluggy, attrs, atomicwrites, pytest
+[33mgreeting-app    |[0m Successfully installed Flask-SQLAlchemy-2.3.2 Jinja2-2.10 MarkupSafe-1.0 SQLAlchemy-1.2.7 Werkzeug-0.14.1 atomicwrites-1.1.5 attrs-18.1.0 click-6.7 flask-1.0.2 itsdangerous-0.24 more-itertools-4.2.0 pluggy-0.6.0 psycopg2-2.7.4 py-1.5.3 pytest-3.6.0 six-1.11.0
+[33mgreeting-app    |[0m  * Serving Flask app "app" (lazy loading)
+[33mgreeting-app    |[0m  * Environment: production
+[33mgreeting-app    |[0m    WARNING: Do not use the development server in a production environment.
+[33mgreeting-app    |[0m    Use a production WSGI server instead.
+[33mgreeting-app    |[0m  * Debug mode: off
+[33mgreeting-app    |[0m /usr/local/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+[33mgreeting-app    |[0m   'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+[33mgreeting-app    |[0m  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
