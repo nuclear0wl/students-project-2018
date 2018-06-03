@@ -1,0 +1,51 @@
+---
+
+- name: Makes stack
+  hosts: local
+  
+  tasks:
+    - include_vars: ansible-vault.yml
+
+    - docker_service:
+        project_name: greetings_stack
+        recreate: always
+        definition:
+          version: '2.2'
+          services:
+            postgres:
+              container_name: database
+              image: postgres
+              ports:
+                - "5432:5432"
+              volumes:
+                - "{{ playbook_dir }}/../data:/var/lib/postgresql/data:rw"
+              environment:
+                - "POSTGRES_USER={{ postgres_username | trim }}"
+                - "POSTGRES_PASSWORD={{ postgres_password | trim }}"
+                - POSTGRES_DB=greetings
+
+            greeting_app:
+              container_name: greeting_app
+              image: python:3.7.0b4
+              expose:
+                - "5000"
+              environment:
+                - "DB_URL=postgresql://{{ postgres_username | trim }}:{{ postgres_password | trim }}@database:5432/greetings"
+              volumes:
+                - "{{ playbook_dir }}/../greetings_app:/greetings_app"
+              entrypoint:
+                - /bin/bash
+                - -c
+                - "pip install -r greetings_app/requirements.txt && python3 greetings_app/app.py"
+              depends_on:
+                - postgres
+
+            proxy:
+              container_name: proxy
+              image: nginx
+              ports:
+                - "8080:80"
+              volumes:
+                - "{{ playbook_dir }}/../conf.d:/etc/nginx/conf.d"
+              depends_on:
+                - greeting_app
