@@ -1,3 +1,5 @@
+def CONTAINER_NAME = "greetings_app"
+
 node {
     stage('Initialize') {
 	def dockerHome = tool 'myDocker'
@@ -9,12 +11,19 @@ node {
         checkout scm
     }
 
-    stage('Unit test') {
-	status = sh(returnStatus: true, script: "python3 -m unittest greetings_app/test_selects.py").trim()
+    stage('Build') {
+	TAG = sh(returnStdout: true, script: "git tag --contains").trim()
+	sh "docker build -t $CONTAINER_NAME:$TAG --pull --no-cache ."
+	echo "Image $CONTAINER_NAME:$TAG was builded successfully"
+    }
+
+    satge('Unit test') {
+	status = sh(returnStdout:true, script: "docker run --rm --entrypoint bash $CONTAINER_NAME:$TAG -c 'pip -q install mock && python3 greetings_app/test_selects.py 2> dev/null && echo \$?'")
 	if (status != 0) {
-	    currentBuild.result = 'FAILED'
-	    sh "echo Unit test was failed"
+	    currentBuild.result = FAILED
+	    echo "Unit tests were failed"
 	    sh "exit ${status}"
 	}
+	echo "Unit tests were passed"
     }
 }
