@@ -18,9 +18,10 @@ node {
     }
 
     stage('Unit test') {
-	status = sh(returnStdout:true, script: "docker run --rm --entrypoint bash $CONTAINER_NAME:$TAG -c 'pip -q install mock && python3 greetings_app/test_selects.py 2> dev/null && echo \$?'")
+	status = sh(returnStdout:true, script: "docker run --rm --entrypoint bash $CONTAINER_NAME:$TAG -c 'pip -q install mock && python3 greetings_app/test_selects.py 2> dev/null && echo \$?'").trim()
 	if (status != 0) {
-	    currentBuild.result = FAILED
+	    echo "STATUS ${status}"
+	    currentBuild.result = 'FAILED'
 	    echo "Unit tests were failed"
 	    sh "exit ${status}"
 	}
