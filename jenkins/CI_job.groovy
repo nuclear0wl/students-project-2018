@@ -27,4 +27,13 @@ node {
 	}
 	echo "Unit tests were passed"
     }
+
+    stage('Push to Docker Registry') {
+        withCredentials([usernamePassword(credentialsId: 'nuclear0wl-dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+            sh "docker login -u $USERNAME -p $PASSWORD"
+            sh "docker tag $CONTAINER_NAME:$TAG $USERNAME/$CONTAINER_NAME:$TAG"
+            sh "docker push $USERNAME/$CONTAINER_NAME:$TAG"
+            echo "Image push complete"
+        }
+    }
 }
