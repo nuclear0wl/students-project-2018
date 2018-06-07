@@ -17,7 +17,7 @@ node {
 	echo "Image $CONTAINER_NAME:$TAG was builded successfully"
     }
 
-    satge('Unit test') {
+    stage('Unit test') {
 	status = sh(returnStdout:true, script: "docker run --rm --entrypoint bash $CONTAINER_NAME:$TAG -c 'pip -q install mock && python3 greetings_app/test_selects.py 2> dev/null && echo \$?'")
 	if (status != 0) {
 	    currentBuild.result = FAILED
