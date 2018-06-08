@@ -10,7 +10,7 @@ pipelineJob("CI_job") {
 			refspec('+refs/tags/*:refs/remotes/origin/tags/*')
                         credentials('nuclear0wl-github')
                     }
-                    branch('master/tags/*.*')
+                    branch('origin/tags/*.*')
                 }
             }
             scriptPath("jenkins/CI_job.groovy")
@@ -32,7 +32,7 @@ pipelineJob("CD_job") {
 			refspec('+refs/tags/*:refs/remotes/origin/tags/*')
                         credentials('nuclear0wl-github')
                     }
-                    branch('master/tags/*.*')
+                    branch('origin/tags/*.*')
                 }
             }
             scriptPath("jenkins/CD_job.groovy")
