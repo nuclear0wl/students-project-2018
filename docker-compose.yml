@@ -14,7 +14,7 @@ services:
 
   greeting_app:
     container_name: greeting_app
-    image: nuclear0wl/greetings_app
+    image: nuclear0wl/greetings_app:latest
     environment:
       - DB_URL=postgresql://user:password@database:5432/greetings
     depends_on:

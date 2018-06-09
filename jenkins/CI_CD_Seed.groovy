@@ -42,4 +42,13 @@ pipelineJob("CD_job") {
     triggers {
 	upstream('CI_job')
     }
+
+    parameters {
+	gitParam('PARAM_GIT') {
+	    description('Select version of image')
+	    type('TAG')
+	    sortMode('DESCENDING_SMART')
+	    defaultValue('latest')
+        }
+    }
 }

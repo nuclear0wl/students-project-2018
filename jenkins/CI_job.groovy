@@ -1,4 +1,5 @@
 def CONTAINER_NAME = "greetings_app"
+def HUB_USER = "nuclear0wl"
 
 node {
     stage('Initialize') {
@@ -13,7 +14,7 @@ node {
 
     stage('Build') {
 	TAG = sh(returnStdout: true, script: "git tag --contains").trim()
-	sh "docker build -t $CONTAINER_NAME:$TAG --pull --no-cache ."
+	sh "docker build -t $HUB_USER/$CONTAINER_NAME:$TAG -t $HUB_USER/$CONTAINER_NAME --pull --no-cache ."
 	echo "Image $CONTAINER_NAME:$TAG was builded successfully"
     }
 
@@ -24,15 +25,16 @@ node {
 	    currentBuild.result = 'FAILED'
 	    echo "Unit tests were failed"
 	    sh "exit ${status}"
+	} else {
+	    echo "Unit tests were passed"
 	}
-	echo "Unit tests were passed"
     }
 
     stage('Push to Docker Registry') {
         withCredentials([usernamePassword(credentialsId: 'nuclear0wl-dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
             sh "docker login -u $USERNAME -p $PASSWORD"
-            sh "docker tag $CONTAINER_NAME:$TAG $USERNAME/$CONTAINER_NAME:$TAG"
             sh "docker push $USERNAME/$CONTAINER_NAME:$TAG"
+	    sh "docker push $USERNAME/$CONTAINER_NAME"
             echo "Image push complete"
         }
     }
