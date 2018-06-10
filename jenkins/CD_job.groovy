@@ -33,6 +33,7 @@ node {
 	} else {
 	    echo "Container is running"
 	}
+        sleep 5
 
 	APP_ADDR = sh(returnStdout: true, script: "docker inspect $CONTAINER_NAME --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'").trim()
 	status = sh(returnStatus: true, script: "curl --silent --connect-timeout 15 --show-error --fail http://$APP_ADDR:$APP_PORT")
