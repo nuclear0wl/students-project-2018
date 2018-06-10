@@ -35,7 +35,7 @@ node {
 	}
 
 	APP_ADDR = sh(returnStdout: true, script: "docker inspect $CONTAINER_NAME --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'").trim()
-	status = sh(returnSatus: true, script: "curl --silent --connect-timeout 15 --show-error --fail http://$APP_ADDR:$APP_PORT")
+	status = sh(returnStatus: true, script: "curl --silent --connect-timeout 15 --show-error --fail http://$APP_ADDR:$APP_PORT")
         if (status != 0) {
 	    echo "Can't connect to app"
 	    currentBuild.result = 'FAILED'
