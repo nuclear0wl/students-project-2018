@@ -2,12 +2,13 @@
 
 - name: Makes stack
   hosts: local
-  
+  become: yes
+ 
   tasks:
     - include_vars: ansible-vault.yml
 
     - docker_service:
-        project_name: greetings_stack
+        project_name: students-project-2018
         recreate: always
         definition:
           version: '2.2'
@@ -44,7 +45,7 @@
               container_name: proxy
               image: nginx
               ports:
-                - "8080:80"
+                - "8181:80"
               volumes:
                 - "{{ playbook_dir }}/../conf.d:/etc/nginx/conf.d"
               depends_on:
